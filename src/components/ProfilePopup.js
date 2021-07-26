@@ -14,12 +14,12 @@ function ProfilePopup(props) {
         onClose={onClose}
         >
             <input id="popup__input_type_name" className="popup__input popup__input_type_name" 
-            type="text" name="name" value="Жак-Ив Кусто" minLength="2" maxLength="40" required 
+            type="text" name="name" minLength="2" maxLength="40" required 
             />
             <span id="popup__input_type_name-error" className="popup__error"></span>
 
             <input id="popup__input_type_about" className="popup__input popup__input_type_about" 
-            type="text" name="about" value="Исследователь океана" minLength="2" maxLength="200" required 
+            type="text" name="about" minLength="2" maxLength="200" required 
             />
             <span id="popup__input_type_about-error" className="popup__error"></span>
 

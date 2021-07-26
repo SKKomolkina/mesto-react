@@ -39,7 +39,7 @@ function App() {
     }
 
     return (
-        <body className="root">
+        <div className="root">
             <Header />
 
             <Main
@@ -65,11 +65,6 @@ function App() {
                 onClose={closeAllPopups}
             /> 
 
-            {/* <PopupWithForm
-                isOpen
-                onClose={closeAllPopups}
-            />  */}
-
             <ImagePopup
                 card={selectedCard}
                 onClose={closeAllPopups}
@@ -88,7 +83,7 @@ function App() {
 
 
 
-        </body>
+        </div>
     );
 }
 

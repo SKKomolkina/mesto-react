@@ -15,7 +15,7 @@ function AvatarPopup(props) {
             >
 
             <input id={`"popup__input_type_${name}"`} className="popup__input popup__input_type_avatar" name="link"
-                value="" placeholder="Ссылка на картинку" type="url" required />
+                placeholder="Ссылка на картинку" type="url" required />
             <span id={`"popup__input_type_${name}-error"`} className="popup__error"></span>
 
         </PopupWithForm>
