@@ -1,10 +1,10 @@
 .header {
     max-width: 880px;
     margin: 0 auto;
-    margin-top: 45px;
     padding: 0;
     padding-left: 25px;
     padding-right: 25px;
+    padding-top: 45px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -16,7 +16,7 @@
 @media (max-width: 880px) { 
  
     .header { 
-        margin-top: 28px;
+        padding-top: 28px;
     } 
 } 
 
