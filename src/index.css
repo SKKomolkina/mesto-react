@@ -38,6 +38,7 @@
 @import url(./blocks/photo/__like-container/photo__like-container.css);
 @import url(./blocks/photo/__like/_active/photo__like_active.css);
 @import url(./blocks/photo/__trash/photo__trash.css);
+@import url(./blocks/photo/__trash/_active/photo__trash_active.css);
 
 /* <-----FOOTER-----> */
 @import url(./blocks/footer/footer.css);
