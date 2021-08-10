@@ -20,6 +20,7 @@ function Main(props) {
             .catch((err) => {
                 console.log(err);
             })
+<<<<<<< HEAD
     }, [])
 
     function handleCardLike(card) {
@@ -46,6 +47,9 @@ function Main(props) {
                 console.log(err);
             });
     }
+=======
+    }, []);
+>>>>>>> parent of 85ded45c (update components Main & Card)
 
     return (
         <main>
@@ -71,9 +75,7 @@ function Main(props) {
                 {cards.map(card => <Card
                     card={card}
                     key={card._id}
-                    onCardClick={onCardClick}
-                    onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete} />)}
+                    onCardClick={onCardClick} />)}
             </section>
         </main>
     )
