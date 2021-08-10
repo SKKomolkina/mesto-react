@@ -13,9 +13,13 @@ import { api } from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
-    const [currentUser, setCurrentUser] = React.useState('');
+    const [currentUser, setCurrentUser] = React.useState({});
 
-    const user = React.useContext(CurrentUserContext);
+    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+
+    const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' });
 
     React.useEffect(() => {
         api.getUserData()
@@ -25,23 +29,29 @@ function App() {
             .catch((err) => console.log(err));
     }, []);
 
-    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-
-    const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' });
-
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
-    };
+    }
 
     function handleEditProfileClick() {
         setIsEditProfilePopupOpen(true);
-    };
+    }
 
     function handleAddPlaceClick() {
         setIsAddPlacePopupOpen(true);
-    };
+    }
+
+    function handleUpdateUser({ name, about }) {
+        api.editProfile(name, about)
+            .then((data) => {
+                console.log(data);
+                setCurrentUser({ name, about });
+                setIsEditProfilePopupOpen(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
     function closeAllPopups() {
         setIsEditAvatarPopupOpen(false);
@@ -76,6 +86,7 @@ function App() {
                 <ProfilePopup
                     isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
+                    onUpdateUser={handleUpdateUser}
                 />
 
                 <PlacePopup

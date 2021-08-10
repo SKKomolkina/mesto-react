@@ -12,10 +12,16 @@ function AvatarPopup(props) {
 
             isOpen={isOpen}
             onClose={onClose}
-            >
+        >
 
-            <input id={`"popup__input_type_${name}"`} className="popup__input popup__input_type_avatar" name="link"
-                placeholder="Ссылка на картинку" type="url" required />
+            <input
+                id={`"popup__input_type_${name}"`}
+                className="popup__input popup__input_type_avatar"
+                name="link"
+                placeholder="Ссылка на картинку"
+                type="url"
+                required
+            />
             <span id={`"popup__input_type_${name}-error"`} className="popup__error"></span>
 
         </PopupWithForm>

@@ -4,10 +4,10 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 function Card(props) {
     const { card, onCardClick, onCardLike, onCardDelete } = props;
     
-    const user = React.useContext(CurrentUserContext);
+    const currentUser = React.useContext(CurrentUserContext);
 
     //сверяем айди карточки 
-    const isOwn = card.owner._id === user._id;
+    const isOwn = card.owner._id === currentUser._id;
 
     //класс, позволяющий при совпадении _.id удалить карточку
     const cardDeleteButtonClassName = (
@@ -15,7 +15,7 @@ function Card(props) {
     );
 
     //айди карточки 
-    const isLiked = card.likes.some(i => i._id === user._id);
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
 
     //класс,позволяющий лайкнуть карточку
     const cardLikeButtonClassName = (`photo__like ${isLiked ? 'photo__like_active' : ''}`);
