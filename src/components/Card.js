@@ -19,12 +19,7 @@ function Card(props) {
         `photo__trash ${isOwn ? 'photo__trash' : '' }`
     );
 
-<<<<<<< HEAD
-    //айди карточки 
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-=======
-    const isLiked = card.likes.some(i => i._id === user._id);
->>>>>>> parent of 85ded45c (update components Main & Card)
 
     const cardLikeButtonClassName = `photo__like ${isLiked ? 'photo__like_active' : ''}`
 
