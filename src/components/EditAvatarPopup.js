@@ -3,7 +3,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import PopupWithForm from './PopupWithForm';
 
-function AvatarPopup(props) {
+function EditAvatarPopup(props) {
     const { name, isOpen, onClose, onUpdateAvatar } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
@@ -55,4 +55,4 @@ function AvatarPopup(props) {
     )
 }
 
-export default AvatarPopup;
+export default EditAvatarPopup;

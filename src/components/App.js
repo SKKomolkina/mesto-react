@@ -4,11 +4,11 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
-import AvatarPopup from './AvatarPopup';
-import ProfilePopup from './ProfilePopup';
-import PlacePopup from './PlacePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import EditProfilePopup from './EditProfilePopup';
+import AddPlacePopup from './AddPlacePopup';
 
-import { api } from '../utils/Api';
+import { api } from '../utils/utils';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
@@ -135,21 +135,21 @@ function App() {
                     cards={cards}
                 />
 
-                <AvatarPopup
+                <EditAvatarPopup
                     isOpen={isEditAvatarPopupOpen}
                     onClose={closeAllPopups}
 
                     onUpdateAvatar={handleUpdateAvatar}
                 />
 
-                <ProfilePopup
+                <EditProfilePopup
                     isOpen={isEditProfilePopupOpen}
                     onClose={closeAllPopups}
 
                     onUpdateUser={handleUpdateUser}
                 />
 
-                <PlacePopup
+                <AddPlacePopup
                     isOpen={isAddPlacePopupOpen}
                     onClose={closeAllPopups}
 

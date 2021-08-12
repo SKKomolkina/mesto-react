@@ -2,7 +2,7 @@ import React from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import PopupWithForm from './PopupWithForm';
 
-function PlacePopup(props) {
+function AddPlacePopup(props) {
     const { isOpen, onClose, onAddPlace } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
@@ -72,4 +72,4 @@ function PlacePopup(props) {
     )
 }
 
-export default PlacePopup;
+export default AddPlacePopup;
