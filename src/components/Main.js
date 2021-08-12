@@ -1,52 +1,13 @@
 import React from 'react';
-import { api } from './../utils/Api';
+// import { api } from './../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import Card from './Card.js';
 
 function Main(props) {
-    const { onEditAvatar, onEditProfile, onAddPlace, onCardClick } = props;
+    const { onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete, cards } = props;
 
     const currentUser = React.useContext(CurrentUserContext);
-
-    const [cards, setCards] = React.useState([]);
-
-    React.useEffect(() => {
-        api.getInitialCards()
-            .then((cards) => {
-                console.log(cards);
-                setCards(cards);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-    }, [])
-
-    function handleCardLike(card) {
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
-
-        api.setLike(card._id, !isLiked)
-            .then((newCard) => {
-                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-    function handleCardDelete(card) {
-        const isOwn = card.owner._id === currentUser._id;
-
-        api.deleteCard(card._id, !isOwn)
-            .then(() => {
-                const newCard = cards.filter((c) => c._id !== card._id);
-                setCards(newCard);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
 
     return (
         <main>
@@ -74,8 +35,8 @@ function Main(props) {
                     card={card}
                     key={card._id}
                     onCardClick={onCardClick}
-                    onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete}  
+                    onCardLike={onCardLike}
+                    onCardDelete={onCardDelete}  
                     />)}
             </section>
         </main>

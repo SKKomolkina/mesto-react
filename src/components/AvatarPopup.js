@@ -1,8 +1,29 @@
 import React from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
 import PopupWithForm from './PopupWithForm';
 
 function AvatarPopup(props) {
-    const { name, isOpen, onClose } = props;
+    const { name, isOpen, onClose, onUpdateAvatar } = props;
+
+    const currentUser = React.useContext(CurrentUserContext);
+    const [avatar, setAvatar] = React.useState('');
+
+    React.useEffect(() => {
+        setAvatar(currentUser.avatar);
+    }, [currentUser]);
+
+    function handleChangeAvatar(evt) {
+        setAvatar(evt.target.value);
+    }
+    
+    function handleSubmit(evt) {
+        evt.preventDefault();
+
+        onUpdateAvatar({
+            avatar,
+        });
+    }
 
     return (
         <PopupWithForm
@@ -12,9 +33,15 @@ function AvatarPopup(props) {
 
             isOpen={isOpen}
             onClose={onClose}
+            onUpdateAvatar={handleSubmit}
+
+            onSubmit={handleSubmit}
         >
 
             <input
+                onChange={handleChangeAvatar}
+                value={avatar || ''}
+
                 id={`"popup__input_type_${name}"`}
                 className="popup__input popup__input_type_avatar"
                 name="link"

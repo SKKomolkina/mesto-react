@@ -46,28 +46,30 @@ function ProfilePopup(props) {
         >
             <input
                 onChange={handleChangeName}
-                id="popup__input_type_name" 
-                className="popup__input popup__input_type_name"
-                type="text" 
-                name="name" 
-                minLength="2" 
-                maxLength="40" 
-                placeholder="Имя"
                 value={name || ''}
+
+                id="popup__input_type_name"
+                className="popup__input popup__input_type_name"
+                type="text"
+                name="name"
+                minLength="2"
+                maxLength="40"
+                placeholder="Имя"
                 required
             />
             <span id="popup__input_type_name-error" className="popup__error"></span>
 
             <input
                 onChange={handleChangeDescription}
-                id="popup__input_type_about" 
-                className="popup__input popup__input_type_about"
-                type="text" 
-                name="about" 
-                minLength="2" 
-                maxLength="200" 
-                placeholder="О себе"
                 value={description || ''}
+
+                id="popup__input_type_about"
+                className="popup__input popup__input_type_about"
+                type="text"
+                name="about"
+                minLength="2"
+                maxLength="200"
+                placeholder="О себе"
                 required
             />
             <span id="popup__input_type_about-error" className="popup__error"></span>
