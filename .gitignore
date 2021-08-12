@@ -1,3 +1,2 @@
-./node_modules
-./build
-node_modules/.cache/gh-pages/https!github.com!SKKomolkina!mesto-react.git/
+node_modules
+build
