@@ -91,7 +91,6 @@ function App() {
     }
 
     function handleCardDelete(card) {
-
         api.deleteCard(card._id)
             .then(() => {
                 const newCard = cards.filter((c) => c._id !== card._id);
