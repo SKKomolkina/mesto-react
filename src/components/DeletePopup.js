@@ -1,7 +1,6 @@
 import React from 'react';
 
-function DeletePopup(props) {
-    const { name, title } = props;
+function DeletePopup({ name, title }) {
     return (
         <>
             <h2 className={`"popup__title popup__title-${name}"`}>{title}</h2>

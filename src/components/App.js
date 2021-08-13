@@ -34,7 +34,6 @@ function App() {
     React.useEffect(() => {
         api.getInitialCards()
             .then((cards) => {
-                console.log(cards);
                 setCards(cards);
             })
             .catch((err) => {
@@ -59,8 +58,7 @@ function App() {
     function handleUpdateUser({ name, about }) {
         api.editProfile(name, about)
             .then((data) => {
-                console.log(data);
-                setCurrentUser({ name, about });
+                setCurrentUser(data);
                 setIsEditProfilePopupOpen(false);
             })
             .catch((err) => {

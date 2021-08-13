@@ -1,10 +1,7 @@
 import React from 'react';
 
-function ImagePopup(props) {
-    const { card, onClose } = props;
-
+function ImagePopup({ card, onClose }) {
     return (
-        <>
             <div 
             className={`popup popup_full_photo ${card.name && 'popup_opened'}`}
             onClick={onClose}
@@ -17,7 +14,6 @@ function ImagePopup(props) {
                     </figure>
                 </div>
             </div>
-        </>
         )
 }
 

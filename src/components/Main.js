@@ -3,9 +3,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import Card from './Card.js';
 
-function Main(props) {
-    const { onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete, cards } = props;
-
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete, cards }) {
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
