@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './Header';
 import Main from './Main';
@@ -8,8 +9,12 @@ import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
 
+import Login from './Login';
+import Register from './Register';
+
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
     const [currentUser, setCurrentUser] = React.useState({});
@@ -21,6 +26,8 @@ function App() {
     const [selectedCard, setSelectedCard] = React.useState({ name: '', link: '' });
 
     const [cards, setCards] = React.useState([]);
+
+    const [isLoggedIn, setIsLoggedIn] = React.useState(true);
 
 
     React.useEffect(() => {
@@ -70,7 +77,7 @@ function App() {
         setSelectedCard({ name: selectedCard.name, link: selectedCard.link });
     }
 
-    function handleUpdateAvatar({ avatar}) {
+    function handleUpdateAvatar({ avatar }) {
         api.changeAvatar(avatar)
             .then((data) => {
                 setCurrentUser(data);
@@ -117,21 +124,38 @@ function App() {
 
 
     return (
-        <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}> 
             <div className="root">
                 <Header />
 
-                <Main
-                    onEditAvatar={handleEditAvatarClick}
-                    onEditProfile={handleEditProfileClick}
-                    onAddPlace={handleAddPlaceClick}
+                <Switch>
+                    <Route path="/sign-in">
+                            <Login />
+                    </Route>
 
-                    onCardClick={handleCardClick}
-                    onCardLike={handleCardLike}
-                    onCardDelete={handleCardDelete}
+                    <Route path="/sign-up">
+                            <Register />
+                    </Route>
 
-                    cards={cards}
-                />
+                    <ProtectedRoute
+                        exact path="/"
+                        isLoggedIn={isLoggedIn}
+
+                        render={() =>
+                                <Main
+                                onEditAvatar={handleEditAvatarClick}
+                                onEditProfile={handleEditProfileClick}
+                                onAddPlace={handleAddPlaceClick}
+
+                                onCardClick={handleCardClick}
+                                onCardLike={handleCardLike}
+                                onCardDelete={handleCardDelete}
+
+                                cards={cards}
+                            />
+                        }
+                    />
+                </Switch>
 
                 <EditAvatarPopup
                     isOpen={isEditAvatarPopupOpen}
@@ -158,19 +182,7 @@ function App() {
                     card={selectedCard}
                     onClose={closeAllPopups}
                 />
-
                 <Footer />
-
-                {/* POPUP_DELETE-CARD */}
-                {/* <div className="popup popup-delete">
-                <button className="button-close popup__cross popup__cross_btn_close-photo popup__button-close"
-                    type="button"></button>
-                <form className="popup__form popup__form_delete" name="delete-form">
-
-                </form>
-            </div> */}
-
-
 
             </div>
         </CurrentUserContext.Provider>

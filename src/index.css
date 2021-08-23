@@ -10,6 +10,8 @@
 /* <-----HEADER-----> */
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__button/header__button.css);
+@import url(./blocks/header/__mail/header__mail.css);
 
 /* <-----LOGO-----> */
 @import url(./blocks/logo/logo.css);
@@ -64,3 +66,6 @@
 @import url(./blocks/popup/__form_delete/popup__form_delete.css);
 @import url(./blocks/popup/__title-delete/popup__title-delete.css);
 @import url(./blocks/popup/__save-delete/popup__save-delete.css);
+
+
+@import url(./blocks/auth/auth.css);
