@@ -17,7 +17,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
         onCardDelete(card);
     }
 
-    //сверяем айди карточки 
+    //сверяем айди карточки
     const isOwn = card.owner._id === currentUser._id;
 
     //класс, позволяющий при совпадении _.id удалить карточку
@@ -31,7 +31,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
 
 
     return (
-        <article key={card._id} className="photo">
+        <article className="photo">
             <div className="photo__image-container">
                 <button
                     onClick={handleDelete}
@@ -57,7 +57,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
                     aria-label="Нравится">
                 </button>
 
-                <p className="photo__like-counter"></p>
+                <p className="photo__like-counter">{card.likes.length}</p>
             </div>
         </article>
     )

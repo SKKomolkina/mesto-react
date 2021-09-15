@@ -8,13 +8,13 @@ function EditAvatarPopup({ name, isOpen, onClose, onUpdateAvatar }) {
     const [avatar, setAvatar] = React.useState('');
 
     React.useEffect(() => {
-        setAvatar(currentUser.avatar);
+        setAvatar('');
     }, [currentUser, isOpen]);
 
     function handleChangeAvatar(evt) {
         setAvatar(evt.target.value);
     }
-    
+
     function handleSubmit(evt) {
         evt.preventDefault();
 
