@@ -27,7 +27,7 @@ function App() {
 
     const [cards, setCards] = React.useState([]);
 
-    const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
 
     React.useEffect(() => {
