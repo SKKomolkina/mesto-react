@@ -42,6 +42,17 @@ function App() {
 
     }, []);
 
+    React.useEffect(() => {
+        const closeByEsc = (e) => {
+            if (e.key === 'Escape') {
+                closeAllPopups();
+            }
+        }
+        document.addEventListener('keydown', closeByEsc);
+
+        return () => document.removeEventListener('keydown', closeByEsc)
+    }, []);
+
 
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
@@ -160,17 +171,6 @@ function App() {
                 />
 
                 <Footer />
-
-                {/* POPUP_DELETE-CARD */}
-                {/* <div className="popup popup-delete">
-                <button className="button-close popup__cross popup__cross_btn_close-photo popup__button-close"
-                    type="button"></button>
-                <form className="popup__form popup__form_delete" name="delete-form">
-                </form>
-            </div> */}
-
-
-
             </div>
         </CurrentUserContext.Provider>
     );
